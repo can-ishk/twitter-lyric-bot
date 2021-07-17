@@ -45,7 +45,8 @@ while True:
     tweets = api.mentions_timeline(read_last_seen(), tweet_mode="extended", include_entities=True)
     # print(tweets[0].id)
     links = []
-    write_last_seen(tweets[0].id)
+    if tweets:
+        write_last_seen(tweets[0].id)
 
     #  GETTING LINKS AND TWEET IDs
     for tweet in tweets:
