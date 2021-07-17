@@ -43,8 +43,6 @@ api = tweepy.API(auth)  # OAUTH
 while True:
     tweets = api.mentions_timeline(read_last_seen(), tweet_mode="extended", include_entities=True)
     # print(tweets[0].id)
-    if tweets:
-        write_last_seen(tweets[0].id)
     links = []
     #  GETTING LINKS AND TWEET IDs
     for tweet in tweets:
@@ -81,4 +79,5 @@ while True:
             api.update_status(
                 status=string.split('\n')[randomLyric] + '\n' + 'https://twitter.com/twitter/statuses/' + str(
                     link.tweetId), in_reply_to_status_id=int(link.tweetId))
+    write_last_seen(tweets[0].id)
     time.sleep(5)
