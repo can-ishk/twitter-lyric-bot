@@ -7,8 +7,8 @@ from lyrics_extractor import SongLyrics
 
 
 fileName = 'lastSeen.txt'
-sp = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET))
-extract_lyrics = SongLyrics(google_search_api_key, custom_search_engine_id)
+sp = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(ENV['SPOTIPY_CLIENT_ID'], ENV['SPOTIPY_CLIENT_SECRET']))
+extract_lyrics = SongLyrics(ENV['google_search_api_key'], ENV['custom_search_engine_id'])
 
 
 
@@ -35,8 +35,8 @@ class tweetInfo:
 # //TWITTER AUTHENTICATION AHEAD//
 
 
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(key, secret)
+auth = tweepy.OAuthHandler(ENV['consumer_key'], ENV['consumer_secret'])
+auth.set_access_token(ENV['key'], ENV['secret'])
 
 api = tweepy.API(auth)  # OAUTH
 
