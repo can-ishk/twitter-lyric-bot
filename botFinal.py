@@ -1,5 +1,6 @@
 import tweepy
 import spotipy
+import os
 from spotipy.oauth2 import SpotifyClientCredentials
 import random
 import time
@@ -7,8 +8,8 @@ from lyrics_extractor import SongLyrics
 
 
 fileName = 'lastSeen.txt'
-sp = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(ENV['SPOTIPY_CLIENT_ID'], ENV['SPOTIPY_CLIENT_SECRET']))
-extract_lyrics = SongLyrics(ENV['google_search_api_key'], ENV['custom_search_engine_id'])
+sp = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(os.environ['SPOTIPY_CLIENT_ID'], os.environ['SPOTIPY_CLIENT_SECRET']))
+extract_lyrics = SongLyrics(os.environ['google_search_api_key'], os.environ['custom_search_engine_id'])
 
 
 
@@ -35,8 +36,8 @@ class tweetInfo:
 # //TWITTER AUTHENTICATION AHEAD//
 
 
-auth = tweepy.OAuthHandler(ENV['consumer_key'], ENV['consumer_secret'])
-auth.set_access_token(ENV['key'], ENV['secret'])
+auth = tweepy.OAuthHandler(os.environ['consumer_key'], os.environ['consumer_secret'])
+auth.set_access_token(os.environ['key'], os.environ['secret'])
 
 api = tweepy.API(auth)  # OAUTH
 
